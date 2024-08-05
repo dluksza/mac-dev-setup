@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+echo -n 'Updating system ...'
+softwareupdate --install --all --restart
+echo 'DONE'
+
 echo -n 'Installing XCode Command Line Tools...'
 xcode-select --install
 echo ' DONE'
