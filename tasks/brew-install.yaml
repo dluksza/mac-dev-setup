@@ -1,0 +1,90 @@
+---
+- pre_tasks:
+    - name: Ensuring Homebrew Is Installed
+      stat:
+        path: /usr/local/bin/brew
+      register: homebrew_check
+
+    - name: Fail If Homebrew Is Not Installed and install_homebrew_if_missing Is False
+      fail:
+        msg: Homebrew is missing...Install from http://brew.sh/
+      when:
+        - not homebrew_check.stat.exists
+        - not install_homebrew_if_missing
+
+    - name: Installing Homebrew
+      shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      when:
+        - not homebrew_check.stat.exists
+        - install_homebrew_if_missing
+
+- name: Add brew taps
+  community.general.homebrew_tap:
+    name:
+      - leoafarias/fvm
+      - qmk/qmk
+
+- name: Install brews
+  community.general.homebrew:
+    name:
+      - git
+      - git-lfs
+      - neovim
+      - zsh
+      - bat
+      - fzf
+      - stats
+      - cocoapods
+      - httpie
+      - jq
+      - podman
+      - pre-commit
+      - qmk
+      - tree
+      - awk
+      - elixir
+      - fvm
+      - mas
+      - 1password-cli
+      - aspell
+      - hunspell
+      - maven
+      - bazelisk
+      - nmap
+      - watchman
+      - wget
+      - zsh-syntax-highlighting
+    upgrade_all: true
+
+- name: Install Emacs
+  community.general.homebrew:
+    name: emacs-plus@29
+    install_options: with-native-comp,with-image-magic,with-ctags
+
+- name: Install casks
+  community.general.homebrew_cask:
+    name:
+      - spotify
+      - font-fira-code
+      - kitty
+      - fvm
+      - font-sf-pro
+      - hammerspoon
+      - obsidian
+      - youtube-downloader
+      - google-chrome
+      - google-backup-and-sync
+      - cleanmymac
+      - telegram
+      - zoom
+    upgrade_all: true
+
+- name: Install packages from AppStore
+  community.general.mas:
+    id:
+      - 443987910 # 1Password
+      - 497799835 # XCode
+      - 1291898086 # ToggleTrack
+      - 310633997 # WhatsApp
+      - 1527619437 # Maccy
+    upgrade_all: true
