@@ -13,4 +13,4 @@ pip3 install ansible
 echo ' DONE'
 
 echo -n 'Provisioning using `ansible-pull`'
-ansible-pull https://github.com/dluksza/dev-mac-setup
+ansible-pull -U https://github.com/dluksza/dev-mac-setup.git
