@@ -1,0 +1,12 @@
+---
+- name: Provision MacOs Development Environment
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Provision Settings
+      include_tasks: tasks/osx_settings.yaml
+#      - tasks/brew-install.yaml
+
+# - roles:
+#    - brave-browser
