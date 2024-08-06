@@ -6,7 +6,7 @@ echo 'Updating system ...'
 sudo softwareupdate --install --all --restart >/dev/null 2>&1
 echo 'DONE'
 
-if ! (xcode-select -p); then
+if ! (xcode-select -p >/dev/null 2>&1); then
     echo 'Installing Command Line Tools (you can track progress in System Settings > General > Software Update)...'
     xcode-select --install >/dev/null 2>&1
     softwareupdate --install --all
