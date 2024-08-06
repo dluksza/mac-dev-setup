@@ -2,6 +2,8 @@
 - name: Provision MacOs Development Environment
   hosts: localhost
   connection: local
+  collections:
+    - shiftsystems.general
 
   tasks:
     - name: Provision Settings
@@ -16,5 +18,5 @@
         state: directory
 
     - name: Install Brave Browser
-      import_role:
-        name: shiftsystems.general.brave
+      shiftsystems.general:
+        role: brave
