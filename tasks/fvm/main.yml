@@ -14,3 +14,10 @@
 - name: FVM set beta as global
   shell:
     cmd: fvm global beta
+
+- name: FVM Install Melos
+  shell:
+    cmd: fvm spawn {{ item }} pub global activate melos
+  loop:
+    - stable
+    - beta
