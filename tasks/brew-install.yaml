@@ -60,7 +60,7 @@
       - spotify
       - font-fira-code
       - kitty
-      - fvm
+      #      - fvm
       - font-sf-pro
       - stats
       - hammerspoon
