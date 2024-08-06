@@ -1,11 +1,16 @@
 ---
 - name: Ensuring Homebrew Is Installed
   stat:
-    path: /usr/local/bin/brew
+    path: /opt/homebrew/bin/brew
   register: homebrew_check
 
 - name: Installing Homebrew
-  shell: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  when:
+    - not homebrew_check.stat.exists
+
+- name: Add Homebrew to PATH
+  shell: "export PATH=$PATH:/opt/homebrew/bin/"
   when:
     - not homebrew_check.stat.exists
 
@@ -24,7 +29,6 @@
       - zsh
       - bat
       - fzf
-      - stats
       - cocoapods
       - httpie
       - jq
@@ -45,7 +49,6 @@
       - watchman
       - wget
       - zsh-syntax-highlighting
-    upgrade_all: true
 
 - name: Install Emacs
   community.general.homebrew:
@@ -60,6 +63,7 @@
       - kitty
       - fvm
       - font-sf-pro
+      - stats
       - hammerspoon
       - obsidian
       - youtube-downloader
@@ -68,7 +72,6 @@
       - cleanmymac
       - telegram
       - zoom
-    upgrade_all: true
 
 - name: Install packages from AppStore
   community.general.mas:
@@ -78,4 +81,3 @@
       - 1291898086 # ToggleTrack
       - 310633997 # WhatsApp
       - 1527619437 # Maccy
-    upgrade_all: true
