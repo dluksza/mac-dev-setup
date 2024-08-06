@@ -10,5 +10,10 @@
     - name: Install software
       include_tasks: tasks/brew-install.yaml
 
+    - name: Create ~/workspace
+      ansible.builtin.file:
+        path: ~/workspace
+        state: directory
+
   roles:
     - brave-browser
