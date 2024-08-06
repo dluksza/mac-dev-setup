@@ -24,4 +24,4 @@ if ! [ -e $ansible_path ]; then
 fi
 
 echo 'Provisioning using ansible-pull'
-$ansible_path -U https://github.com/dluksza/mac-dev-setup.git
+$ansible_path --ask-become-pass --url https://github.com/dluksza/mac-dev-setup.git
