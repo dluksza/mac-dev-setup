@@ -5,8 +5,9 @@
 
   tasks:
     - name: Provision Settings
-      include_tasks:
-        - tasks/osx_settings.yaml
-        - tasks/brew-install.yaml
+      include_tasks: tasks/osx_settings.yaml
+
+    - name: Install software
+      include_tasks: tasks/brew-install.yaml
 # - roles:
 #    - brave-browser
