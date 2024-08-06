@@ -3,7 +3,7 @@
 After getting new Mac, finish the system setup process, install all Software Updates, then run:
 
 ``` sh
-curl https://raw.githubusercontent.com/dluksza/mac-dev-setup/main/initial_setup.sh | sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/dluksza/mac-dev-setup/main/initial_setup.sh)"
 ```
  
 ## Tracking changes in `defaults`
