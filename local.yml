@@ -13,6 +13,9 @@
     - name: Install Emacs
       include_tasks: tasks/emacs/main.yml
 
+    - name: Install Visual Studio Code
+      include_tasks: tasks/vscode/main.yml
+
     - name: Install FVM
       include_tasks: tasks/fvm/main.yml
 
