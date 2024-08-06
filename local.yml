@@ -10,6 +10,9 @@
     - name: Install software
       include_tasks: tasks/brew-install.yaml
 
+    - name: Install Emacs
+      include_tasks: tasks/emacs/main.yml
+
     - name: Install Brave Browser
       include_tasks: tasks/brave-browser.yaml
 
