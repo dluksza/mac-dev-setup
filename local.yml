@@ -2,8 +2,10 @@
 - name: Provision MacOs Development Environment
   hosts: localhost
   connection: local
-  collections:
-    - shiftsystems.general
+  pre_tasks:
+    - name: Install Ansible roles and collections
+      ansible.builtin.command:
+        cmd: ~/Library/Python/3.9/bin/ansible-galaxy install -r requirements.yml
 
   tasks:
     - name: Provision Settings
@@ -17,6 +19,8 @@
         path: ~/workspace
         state: directory
 
-    - name: Install Brave Browser
-      shiftsystems.general:
-        role: brave
+  roles:
+    - role: professormanhattan.bravebrowser
+    # - name: Install Brave Browser
+    #   shiftsystems.general:
+    #     role: brave
