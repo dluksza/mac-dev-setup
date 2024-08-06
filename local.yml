@@ -15,5 +15,6 @@
         path: ~/workspace
         state: directory
 
-  roles:
-    - brave-browser
+    - name: Install Brave Browser
+      import_role:
+        name: shiftsystems.general.brave
