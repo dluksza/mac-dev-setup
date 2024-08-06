@@ -67,7 +67,7 @@
       - obsidian
       - youtube-downloader
       - google-chrome
-      - google-backup-and-sync
+      # - google-backup-and-sync
       - cleanmymac
       - telegram
       - zoom
