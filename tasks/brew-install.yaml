@@ -76,9 +76,13 @@
 - name: Install packages from AppStore
   community.general.mas:
     id:
-      - 497799835 # XCode
+      - 497799835 # Xcode
       - 1291898086 # ToggleTrack
       - 310633997 # WhatsApp
+
+- name: Accept Xcode License
+  shell: xcodebuild -license accept
+  become: true
 
 - name: Uninstall unused Applications
   community.general.mas:
