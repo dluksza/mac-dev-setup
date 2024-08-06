@@ -80,3 +80,14 @@
       - 1291898086 # ToggleTrack
       - 310633997 # WhatsApp
       - 1527619437 # Maccy
+
+- name: Uninstall unused Applications
+  community.general.mas:
+    become: true
+    state: absent
+    id:
+      - 408981434 # iMovie
+      - 409183694 # Keynote
+      - 409203825 # Numbers
+      - 409201541 # Pages
+      - 682658836 # GarageBand
