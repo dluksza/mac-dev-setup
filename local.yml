@@ -10,6 +10,9 @@
     - name: Install software
       include_tasks: tasks/brew-install.yaml
 
+    - name: Install stats
+      include_tasks: tasks/stats/main.yml
+
     - name: Install Emacs
       include_tasks: tasks/emacs/main.yml
 
