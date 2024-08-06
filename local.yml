@@ -9,5 +9,6 @@
 
     - name: Install software
       include_tasks: tasks/brew-install.yaml
-# - roles:
-#    - brave-browser
+
+  roles:
+    - brave-browser
