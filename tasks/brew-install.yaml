@@ -51,7 +51,7 @@
 - name: Install Emacs
   community.general.homebrew:
     name: emacs-plus@29
-    install_options: with-native-comp,with-image-magic,with-ctags
+    install_options: with-native-comp,with-imagemagick,with-ctags
 
 - name: Install casks
   community.general.homebrew_cask:
