@@ -86,7 +86,6 @@
 
 - name: Uninstall unused Applications
   community.general.mas:
-    become: true
     state: absent
     id:
       - 408981434 # iMovie
@@ -94,3 +93,4 @@
       - 409203825 # Numbers
       - 409201541 # Pages
       - 682658836 # GarageBand
+  become: true
