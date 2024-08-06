@@ -79,7 +79,6 @@
       - 497799835 # XCode
       - 1291898086 # ToggleTrack
       - 310633997 # WhatsApp
-      - 1527619437 # Maccy
 
 - name: Uninstall unused Applications
   community.general.mas:
