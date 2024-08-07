@@ -12,5 +12,7 @@
   when: not sdkman_check.stat.exists
 
 - name: SDKMan Java 21.0.4-tem
-  shell: sdk install java 21.0.4-tem
+  shell:
+    cmd: sdk install java 21.0.4-tem
+    executable: /bin/zsh
   when: not sdkman_check.stat.exists
