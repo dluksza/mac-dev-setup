@@ -10,6 +10,8 @@ if ! (xcode-select -p >/dev/null 2>&1); then
     echo 'Installing Command Line Tools (you can track progress in System Settings > General > Software Update)...'
     xcode-select --install >/dev/null 2>&1
     softwareupdate --install --all
+    printf '\t Confirm accepting Xcode license'
+    sudo xcodebuild -license accept
     echo ' DONE'
 fi
 

@@ -74,10 +74,6 @@
       - 1291898086 # ToggleTrack
       - 310633997 # WhatsApp
 
-- name: Accept Xcode License
-  shell: xcodebuild -license accept
-  become: true
-
 - name: Uninstall unused Applications
   community.general.mas:
     state: absent
