@@ -5,7 +5,7 @@
 
   tasks:
     - name: Provision Settings
-      include_tasks: tasks/osx-settings/main.yaml
+      include_tasks: tasks/osx-settings/main.yml
 
     - name: Install software
       include_tasks: tasks/brew-install.yaml
