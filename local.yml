@@ -10,6 +10,11 @@
     - name: Install software
       include_tasks: tasks/brew-install.yaml
 
+    - name: Change shell to zsh
+      ansible.builtin.user:
+        name: "{{ remote_regular_user }}"
+        shell: /opt/homebrew/bin/zsh
+
     - name: Install stats
       include_tasks: tasks/stats/main.yml
 
