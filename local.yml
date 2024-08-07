@@ -13,6 +13,9 @@
     - name: Install stats
       include_tasks: tasks/stats/main.yml
 
+    - name: Install Node
+      include_tasks: tasks/node/main.yml
+
     - name: Install SDKMan
       include_tasks: tasks/sdkman/main.yml
 
