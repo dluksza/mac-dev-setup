@@ -83,5 +83,8 @@
       - 682658836 # GarageBand
   become: true
 
+- name: Install Xcode system requirements
+  shell: xcodebuild -runFirstLaunch
+
 - name: Download iOS Platform
   shell: xcodebuild -downloadPlatform iOS
