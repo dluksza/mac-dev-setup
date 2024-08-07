@@ -82,3 +82,6 @@
       - 409201541 # Pages
       - 682658836 # GarageBand
   become: true
+
+- name: Download iOS Platform
+  shell: xcodebuild -downloadPlatform iOS
