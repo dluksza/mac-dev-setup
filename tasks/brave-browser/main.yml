@@ -1,90 +1,32 @@
 ---
-- name: Ensuring Homebrew Is Installed
+- name: Is Brave Browser installed
   stat:
-    path: /opt/homebrew/bin/brew
-  register: homebrew_check
+    path: /Applications/Brave Browser.app/
+  register: brave_check
 
-- name: Installing Homebrew
-  shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+- name: Download Brave Browser
+  ansible.builtin.get_url:
+    url: https://referrals.brave.com/latest/BRV002/Brave-Browser.dmg
+    dest: /tmp/brave_browser.dmg
   when:
-    - not homebrew_check.stat.exists
+    - not brave_check.stat.exists
 
-- name: Add Homebrew to PATH
-  shell: "export PATH=$PATH:/opt/homebrew/bin/"
+- name: Mount Brave Browser dmg
+  command: hdiutil attach /tmp/brave_browser.dmg -nobrowse -mountpoint /tmp/brave_browser
   when:
-    - not homebrew_check.stat.exists
+    - not brave_check.stat.exists
 
-- name: Add brew taps
-  community.general.homebrew_tap:
-    name:
-      - d12frosted/emacs-plus
-      - leoafarias/fvm
-      - qmk/qmk
+- name: Install Brave Browser
+  shell: cp -R /tmp/brave_browser/Brave\ Browser.app /Applications/Brave\ Browser.app
+  when:
+    - not brave_check.stat.exists
 
-- name: Install brews
-  community.general.homebrew:
-    name:
-      - git
-      - git-lfs
-      - neovim
-      - zsh
-      - bat
-      - fzf
-      - cocoapods
-      - httpie
-      - jq
-      - podman
-      - pre-commit
-      - qmk
-      - tree
-      - awk
-      - elixir
-      - mas
-      - aspell
-      - hunspell
-      - maven
-      - bazelisk
-      - nmap
-      - watchman
-      - wget
-      - zsh-syntax-highlighting
+- name: Unmount Brave Browser dmg
+  command: hdiutil detach /tmp/brave_browser
+  when:
+    - not brave_check.stat.exists
 
-- name: Install casks
-  community.general.homebrew_cask:
-    name:
-      - 1password
-      - 1password-cli
-      - spotify
-      - font-fira-code
-      - kitty
-      - font-sf-pro
-      - hammerspoon
-      - obsidian
-      - youtube-downloader
-      - google-chrome
-      # - google-backup-and-sync
-      - cleanmymac
-      - telegram
-      - zoom
-
-- name: Install packages from AppStore
-  community.general.mas:
-    id:
-      - 497799835 # Xcode
-      - 1291898086 # ToggleTrack
-      - 310633997 # WhatsApp
-
-- name: Accept Xcode License
-  shell: xcodebuild -license accept
-  become: true
-
-- name: Uninstall unused Applications
-  community.general.mas:
-    state: absent
-    id:
-      - 408981434 # iMovie
-      - 409183694 # Keynote
-      - 409203825 # Numbers
-      - 409201541 # Pages
-      - 682658836 # GarageBand
-  become: true
+- name: Remove Brave Browser dmg
+  command: rm /tmp/brave_browser.dmg
+  when:
+    - not brave_check.stat.exists
