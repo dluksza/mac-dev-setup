@@ -52,8 +52,6 @@
 - name: Install casks
   community.general.homebrew_cask:
     name:
-      - 1password
-      - 1password-cli
       - spotify
       - font-fira-code
       - kitty
