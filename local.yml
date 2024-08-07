@@ -26,7 +26,7 @@
       include_tasks: tasks/fvm/main.yml
 
     - name: Install Brave Browser
-      include_tasks: tasks/brave-browser.yaml
+      include_tasks: tasks/brave-browser/main.yml
 
     - name: Create ~/workspace
       ansible.builtin.file:
